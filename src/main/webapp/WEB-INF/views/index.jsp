@@ -6,7 +6,7 @@
  <meta charset="utf-8">
  <meta content="width=device-width, initial-scale=1.0" name="viewport">
  
-<title>Quick Portal</title>
+<title>QuickPortal Home</title>
 <meta content="" name="description">
  <meta content="" name="keywords">
 
@@ -43,7 +43,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="#header">Home</a></li>
-          <li><a href="dashboard.jsp">Dashboard</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
           <li><a href="#contact">Contact</a></li>
 
         </ul>
