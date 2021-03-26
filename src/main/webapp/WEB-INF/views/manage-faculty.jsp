@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>QuickPortal - Manage Facutly</title>
+        <title>QuickPortal - Manage Faculty</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
@@ -96,22 +96,30 @@
             </form>
 
 
-            <!--Click search button which outputs that course with Teacher Id, Teacher Name, Course Name -->
-
-            <table>
-                <tr>
-                  <th>Faculty ID</th>
-                  <th>Faculty Name</th>
-                  <th>Remove Faculty Member</th>
-                  
-                </tr>
-                <tr>
-                  <td>11111</td>
-                  <td>Smith, Robert</td>
-                  <td><button type="button" id="remove-fac">Remove</button></td>
-                </tr>
-                
-              </table><br><br>
+            <!--Show teachers Search results -->            
+            <c:if test="${teachers != null && teachers.size() > 0}">
+	           
+	            <table>	            	
+	                <tr>
+	                  <th>Faculty ID</th>
+	                  <th>Faculty Name</th>
+	                  <th>Faculty Title</th>
+	                  <th>Email</th>
+	                  <th>Remove Faculty Member</th>
+	                </tr>
+	                
+	                <c:forEach var="teacher" items="${teachers}">
+		                <tr>
+		                  <td>${teacher.getId()}</td>
+		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
+		                  <td>${teacher.getTitle()}</td>
+		                  <td>${teacher.getEmail()}</td>
+		                  <td><button type="button" id="remove-fac">Remove</button></td>
+		                </tr>
+	                </c:forEach>
+	                
+	              </table><br><br>
+	         </c:if>
               
 
               <!--Click 'Add a Faculty Member' to input above info into DB tables (this is what comes up after clicking the button)-->

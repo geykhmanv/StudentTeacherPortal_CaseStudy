@@ -25,7 +25,7 @@ public class TeacherController {
     public String manageFaculty(@RequestParam(name="lastName", required=false) String lastName, @RequestParam(name="id", required=false) Long id, ModelMap model){
         if( lastName != null ) {
         	 List<Teacher> teachers = teacherService.findTeacherByLastName(lastName);             
-             model.put("foundTeachers", teachers);
+             model.put("teachers", teachers);
         }
         if( id != null ) {
         	//todo
