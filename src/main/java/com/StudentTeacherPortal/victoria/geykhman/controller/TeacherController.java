@@ -3,28 +3,31 @@ package com.StudentTeacherPortal.victoria.geykhman.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
-import com.StudentTeacherPortal.victoria.geykhman.service.TeacherService;
+import com.StudentTeacherPortal.victoria.geykhman.service.TeacherServiceInterface;
 
-@RestController
+
+@Controller
 public class TeacherController {
 	
 	@Autowired
-	private TeacherService teacherService;
+	private TeacherServiceInterface teacherService;
 	
 	
-	@RequestMapping(value = "/teacher-by-name/{lastName}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Teacher> findTeacherByName(@PathVariable("lastName") String lastName) {
+	@RequestMapping(value = "/teacher-by-name/{lastName}", method = RequestMethod.GET)
+    public String findTeacherByName(@PathVariable("lastName") String lastName, ModelMap model) {
         
-       List<Teacher> teachers = teacherService.findTeacherByName(lastName);
+       List<Teacher> teachers = teacherService.findTeacherByLastName(lastName);
+       
+       model.put("foundTeachers", teachers);
         
-       return teachers;
+       return "manage-faculty";
     }// public List<Teacher> findTeacherByName
     
 }

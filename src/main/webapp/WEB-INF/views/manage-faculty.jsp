@@ -87,7 +87,10 @@
                 </div>
               </div>
               
-              <div class="text-center"><button type="submit">Search</button>&nbsp&nbsp<button type="submit">Add a Faculty Member</button></div>
+              <div class="text-center">
+              	<button type="submit">Search</button> &nbsp&nbsp
+              	<button type="submit">Add a Faculty Member</button>
+              </div>
               
 
             </form>
