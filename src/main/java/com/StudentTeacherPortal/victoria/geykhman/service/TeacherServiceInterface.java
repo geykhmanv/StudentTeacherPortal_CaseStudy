@@ -6,4 +6,9 @@ import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
 
 public interface TeacherServiceInterface {
 	public List<Teacher> findTeacherByLastName(String lastName);
+	public List<Teacher> findTeacherById(Long id);
+	
+	
+	
+	
 }

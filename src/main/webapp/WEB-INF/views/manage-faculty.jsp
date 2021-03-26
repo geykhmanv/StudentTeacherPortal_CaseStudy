@@ -78,11 +78,11 @@
             <form class="php-email-form" id="myForm" method="post" action="/manage-faculty">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="id" class="form-control" id="tid" placeholder="Search By Faculty ID"/>
+                  <input type="text" name="id" class="form-control" id="tid" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="lastName" id="tname" placeholder="Search By Faculty Last Name" />
+                  <input type="text" class="form-control" name="lastName" id="tname" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
                   <div class="validate"></div>
                 </div>
               </div>
