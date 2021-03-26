@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
 import com.StudentTeacherPortal.victoria.geykhman.service.TeacherServiceInterface;
@@ -19,15 +20,18 @@ public class TeacherController {
 	@Autowired
 	private TeacherServiceInterface teacherService;
 	
-	
-	@RequestMapping(value = "/teacher-by-name/{lastName}", method = RequestMethod.GET)
-    public String findTeacherByName(@PathVariable("lastName") String lastName, ModelMap model) {
-        
-       List<Teacher> teachers = teacherService.findTeacherByLastName(lastName);
-       
-       model.put("foundTeachers", teachers);
-        
-       return "manage-faculty";
-    }// public List<Teacher> findTeacherByName
+	//@RequestMapping( value={ "/manage-faculty", "/manage-faculty/last-name/{lastName}", "/manage-faculty/id/{id}" }, method = RequestMethod.GET)
+	@RequestMapping( value={ "/manage-faculty" })
+    public String manageFaculty(@RequestParam(name="lastName", required=false) String lastName, @RequestParam(name="id", required=false) Long id, ModelMap model){
+        if( lastName != null ) {
+        	 List<Teacher> teachers = teacherService.findTeacherByLastName(lastName);             
+             model.put("foundTeachers", teachers);
+        }
+        if( id != null ) {
+        	//todo
+        }
+		
+		return "manage-faculty";
+    }
     
-}
+}//public class TeacherController
