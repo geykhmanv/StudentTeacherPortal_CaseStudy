@@ -94,7 +94,29 @@
               
 
             </form>
-
+            
+            <c:if test="${allTeachers != null && allTeachers.size() > 0}">
+            <table>	            	
+	                <tr>
+	                  <th>Faculty ID</th>
+	                  <th>Faculty Name</th>
+	                  <th>Faculty Title</th>
+	                  <th>Email</th>
+	                  <th>Remove Faculty Member</th>
+	                </tr>
+	                
+	                <c:forEach var="teacher" items="${allTeachers}">
+		                <tr>
+		                  <td>${teacher.getId()}</td>
+		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
+		                  <td>${teacher.getTitle()}</td>
+		                  <td>${teacher.getEmail()}</td>
+		                  <td><button type="button" id="remove-fac">Remove</button></td>
+		                </tr>
+	                </c:forEach>
+	                
+	         </table><br><br>
+			</c:if>
 
             <!--Show teachers Search results -->            
             <c:if test="${teachers != null && teachers.size() > 0}">

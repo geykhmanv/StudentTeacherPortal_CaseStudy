@@ -28,5 +28,9 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 		
 		return teachers;
 	}
+	
+	public List<Teacher> getAllTeachers() {
+		return teacherRepo.findAll();
+	}
 
 }//public class TeacherServiceImpl implements TeacherServiceInterface
