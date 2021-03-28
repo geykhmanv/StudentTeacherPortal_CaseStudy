@@ -21,23 +21,23 @@ public class TeacherController {
 	//@RequestMapping( value={ "/manage-faculty", "/manage-faculty/last-name/{lastName}", "/manage-faculty/id/{id}" }, method = RequestMethod.GET)
 	@RequestMapping( value={ "/manage-faculty" })
     public String manageFaculty(@RequestParam(name="lastName", required=false) String lastName, @RequestParam(name="id", required=false) Long id, ModelMap modelMap){
-        
-		List<Teacher> allTeachers = teacherService.getAllTeachers();
+
 		modelMap.clear();
-		modelMap.put("allTeachers", allTeachers);
+		List<Teacher> teachers = null;
 		
-		if( lastName != null ) {
-        	 List<Teacher> teachers = teacherService.findTeacherByLastName(lastName);    
-        	 modelMap.clear();
-             modelMap.put("teachers", teachers);
+		if( lastName != null && !lastName.trim().isEmpty()) {
+        	 teachers = teacherService.findTeacherByLastName(lastName);   
              modelMap.put("searchCriteriaLastName", lastName);
         }
-        if( id != null ) {
-        	List<Teacher> teachers = teacherService.findTeacherById(id);
-        	modelMap.clear();
-        	modelMap.put("teachers", teachers);
+		else if( id != null ) {
+			teachers = teacherService.findTeacherById(id);
         	modelMap.put("searchCriteriaId", id);
+        } else {
+        	teachers = teacherService.getAllTeachers();
         }
+		
+		
+		modelMap.put("teachers", teachers);
 		
 		return "manage-faculty";
     }//public String manageFaculty
