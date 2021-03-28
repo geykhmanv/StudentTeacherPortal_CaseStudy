@@ -9,7 +9,8 @@ public interface TeacherServiceInterface {
 	public List<Teacher> findTeacherById(Long id);
 	public List<Teacher> getAllTeachers();
 	public Teacher addTeacher(Teacher teacher);
+	public void deleteTeacher(Long id);
 	
 	
 	
-}
+}//public interface TeacherServiceInterface

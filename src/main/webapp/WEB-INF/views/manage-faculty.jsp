@@ -119,7 +119,7 @@
 		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
 		                  <td>${teacher.getTitle()}</td>
 		                  <td>${teacher.getEmail()}</td>
-		                  <td><button type="button" id="remove-fac">Remove</button></td>
+		                  <td><a href="${page.Context.request.contextPath}/delete/${teacher.id}" onclick="return confirm('Are you sure?')"> Delete</a></td>
 		                </tr>
 	                </c:forEach>
 	                
