@@ -76,7 +76,7 @@
 
           <div class="" data-aos="fade-left" data-aos-delay="100">
 
-            <form class="php-email-form" id="myForm" method="post" action="/manage-faculty">
+            <form class="php-email-form" id="searchTeachersForm" method="post" action="/manage-faculty">
               <div class="form-row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
@@ -90,11 +90,18 @@
               
               <div class="text-center">
               	<button type="submit">Search</button> &nbsp&nbsp
-             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>&nbsp&nbsp
-              	<button type="submit">Add a Faculty Member</button>
-              </div>
-              
+             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>&nbsp&nbsp              	
+              </div>        
 
+            </form>
+            
+            <form class="php-email-form" id="addFacultyMemberForm" method="post" action="">
+            	 <div class="text-center">
+            		<button id="addFacultyMemberBtn">Add a Faculty Member</button>
+            		<table>
+            			<tr><td>First Name</td><td><input id="newTeacherFirstName" value="" /></td></tr>
+            		</table>
+            	</div>
             </form>
             
 
