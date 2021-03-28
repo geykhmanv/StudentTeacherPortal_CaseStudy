@@ -1,18 +1,26 @@
 package com.StudentTeacherPortal.victoria.geykhman.model;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Teacher")
 public class Teacher {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String userId;
 	private String password;
@@ -26,6 +34,10 @@ public class Teacher {
 	private String zipcode;
 	private String title;
 	private Date dateOfHire;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinTable(name = "course_teacher")
+	private List<Course> teacherCourses;
 
 	
 	public Teacher() {
@@ -55,13 +67,18 @@ public class Teacher {
 		
 	}
 
+	
+	public List<Course> getTeacherCourses() {
+		return teacherCourses;
+	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public void setTeacherCourses(List<Course> teacherCourses) {
+		this.teacherCourses = teacherCourses;
+	}
+
 	public long getId() {
 		return id;
 	}
-
 
 	public void setId(long id) {
 		this.id = id;
