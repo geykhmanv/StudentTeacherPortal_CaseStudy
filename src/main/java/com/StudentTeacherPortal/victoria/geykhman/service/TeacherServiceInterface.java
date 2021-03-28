@@ -8,6 +8,7 @@ public interface TeacherServiceInterface {
 	public List<Teacher> findTeacherByLastName(String lastName);
 	public List<Teacher> findTeacherById(Long id);
 	public List<Teacher> getAllTeachers();
+	public Teacher addTeacher(Teacher teacher);
 	
 	
 	

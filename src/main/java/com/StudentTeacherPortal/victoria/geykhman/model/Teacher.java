@@ -186,7 +186,15 @@ public class Teacher {
 	public void setDateOfHire(Date dateOfHire) {
 		this.dateOfHire = dateOfHire;
 	}
+
+	@Override
+	public String toString() {
+		return "Teacher [id=" + id + ", userId=" + userId + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", email=" + email + ", phone=" + phone + ", address=" + address
+				+ ", city=" + city + ", state=" + state + ", zipcode=" + zipcode + ", title=" + title + ", dateOfHire="
+				+ dateOfHire + "]";
+	}
 	
 	
 	
-}
+}//public class Teacher 
