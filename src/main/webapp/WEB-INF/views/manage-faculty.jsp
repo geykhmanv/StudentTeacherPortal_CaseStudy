@@ -8,6 +8,7 @@
         <meta content="" name="keywords">
       
         <%@include file="includes/header.jsp" %>
+        
       
         <!-- =======================================================
         * Template Name: Anyar - v2.2.1
@@ -78,17 +79,18 @@
             <form class="php-email-form" id="myForm" method="post" action="/manage-faculty">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="id" class="form-control" id="tid" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
+                  <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="lastName" id="tname" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
+                  <input type="text" class="form-control" name="lastName" id="teacherName" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
                   <div class="validate"></div>
                 </div>
               </div>
               
               <div class="text-center">
               	<button type="submit">Search</button> &nbsp&nbsp
+             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>&nbsp&nbsp
               	<button type="submit">Add a Faculty Member</button>
               </div>
               
@@ -219,5 +221,7 @@
 
 <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
 <div id="preloader"></div>
+
+<script type="text/javascript" src="assets/js/util.js"></script>
 
 </html>
