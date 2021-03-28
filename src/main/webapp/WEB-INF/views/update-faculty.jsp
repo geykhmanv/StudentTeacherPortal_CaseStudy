@@ -1,9 +1,11 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>QuickPortal - Manage Faculty</title>
+        <title>QuickPortal - Update Faculty</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
@@ -44,8 +46,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Manage Faculty</h2>
-          <h6>Search or remove faculty at University</h6>
+          <h2>Update Faculty Members</h2>
+	      <h6>Update a Faculty Member's Information</h6>
         </div>
 
         <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
@@ -76,67 +78,73 @@
 
           <div class="" data-aos="fade-left" data-aos-delay="100">
 
-            <form class="php-email-form" id="searchTeachersForm" method="post" action="/manage-faculty">
+            <form:form class="php-email-form" id="addFacultyForm" method="post" action="/save-faculty-update" modelAttribute="teacher">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
+                  <form:input type="text" path="id" name="id" class="form-control" id="facultyId"  required="true" hidden="true"/> 
+                  <form:input type="text" path="id" name="id" class="form-control" id="facultyId" style="width:50px" required="true" disabled="true"/>               
+                </div>
+                 <div class="col-md-6 form-group">
+                  &nbsp;                  
+                 </div>
+                <div class="col-md-6 form-group">
+                   <form:input type="text" path="firstName" name="firstName" class="form-control" id="facultyFirstName" placeholder="Enter First Name" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="lastName" id="teacherName" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
+                  <form:input type="text" path="lastName" class="form-control" name="lastName" id="facultyLastName" placeholder="Enter Last Name" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="address" class="form-control" name="address" id="facultyAddress" placeholder="Enter Address" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="city" class="form-control" name="city" id="facultyCity" placeholder="Enter City" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="state" class="form-control" name="state" id="facultyState" placeholder="Enter State (Ex: NJ)" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="zipcode" class="form-control" name="zipcode" id="facultyZip" placeholder="Enter Zipcode" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="email" class="form-control" name="email" id="facultyEmail" placeholder="Enter Email" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="phone" class="form-control" name="phone" id="facultyPhone" placeholder="Enter Phone Number" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="title" class="form-control" name="title" id="facultyTitle" placeholder="Enter Faculty Title" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="userId" class="form-control" name="userId" id="facultyUserId" placeholder="Enter Faculty User Id" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <form:input type="text" path="password" class="form-control" name="password" id="facultyPassword" placeholder="Enter Faculty Password" required="true"/>
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-6 form-group">
+                <form:label path="dateOfHire" style="margin-left: 35px">Date of Hire: </form:label><br>
+                  <form:input type="date" path="dateOfHire" class="form-control" name="dateOfHire" id="facultyDateOfHire" required="true"/>
                   <div class="validate"></div>
                 </div>
               </div>
               
               <div class="text-center">
-              	<button type="submit">Search</button> 
-             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>             	
+              	<button type="submit">Update</button> 
+                   	
               </div>        
 
-            </form>
+            </form:form>
             
-             <form class="php-email-form" id="addFacultyForm" action="/add-faculty">
-	             <div class="text-center">	              	
-	             	<button type="submit">Add a Faculty Member</button>              	
-	              </div> 
-	         </form>
-            
-            <!--Show teachers Search results -->            
-            <c:if test="${teachers != null && teachers.size() > 0}">
-	          
-	            <table>	            	
-	                <tr>
-	                  <th>Faculty ID</th>
-	                  <th>Faculty Name</th>
-	                  <th>Faculty Title</th>
-	                  <th>Email</th>
-	                  <th>Update Faculty Member</th>
-	                  <th>Assign to a Course</th>
-	                  <th>Remove Faculty Member</th>
-	                </tr>
-	                
-	                <c:forEach var="teacher" items="${teachers}">
-		                
-		                <tr>
-		                  <td>${teacher.getId()}</td>
-		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
-		                  <td>${teacher.getTitle()}</td>
-		                  <td>${teacher.getEmail()}</td>
-		                  <td>
-		                  	<form id="updateFacultyForm_${teacher.getId()}" action="/update-faculty" method="POST">
-		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
-		                  		<a href="javascript:void(0)" onclick="document.getElementById('updateFacultyForm_${teacher.getId()}').submit()">Update</a>
-		                  	</form>
-		                  </td>
-		                  <td><a href="">Assign</a></td>
-		                  <td><a href="${page.Context.request.contextPath}/delete/${teacher.id}" onclick="return confirm('Are you sure you'd like to delete this faculty member?')"> Delete</a></td>
-		                </tr>
-		               
-	                </c:forEach>
-	              </table><br><br>
-
-	         </c:if>
-              
           </div>
 
        

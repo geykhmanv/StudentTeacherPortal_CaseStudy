@@ -22,6 +22,7 @@ public class TeacherController {
 	@Autowired
 	private TeacherServiceInterface teacherService;
 	
+	
 	@RequestMapping(value="/add-faculty", method = RequestMethod.GET)
     public String addFaculty(ModelMap modelMap){
 		Teacher teacher = new Teacher();
@@ -55,7 +56,6 @@ public class TeacherController {
         	teachers = teacherService.getAllTeachers();
         }
 		
-		
 		modelMap.put("teachers", teachers);
 		
 		return "manage-faculty";
@@ -64,6 +64,20 @@ public class TeacherController {
 	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
 	public String deleteTeacher(@PathVariable("id") Long id) {
 		teacherService.deleteTeacher(id);
+		return "redirect:/manage-faculty";
+	}
+	
+	@RequestMapping(value={"/update-faculty"})
+    public String updateFaculty(@RequestParam(name="id") Long id, ModelMap modelMap){
+		List<Teacher> teachers = teacherService.findTeacherById(id);
+		modelMap.clear();
+		if(teachers != null) modelMap.put("teacher", teachers.get(0));
+        return "update-faculty";
+    }
+	
+	@PostMapping("/save-faculty-update")
+	public String saveFacultyUpdate(@ModelAttribute("teacher") Teacher teacher) {
+		teacherService.updateTeacher(teacher);
 		return "redirect:/manage-faculty";
 	}
     

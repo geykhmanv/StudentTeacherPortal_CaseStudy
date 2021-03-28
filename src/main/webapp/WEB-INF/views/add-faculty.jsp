@@ -81,52 +81,52 @@
             <form:form class="php-email-form" id="addFacultyForm" method="post" action="add-faculty" modelAttribute="teacher">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="firstName" name="firstName" class="form-control" id="facultyFirstName" placeholder="Enter First Name" required/>
+                  <form:input type="text" path="firstName" name="firstName" class="form-control" id="facultyFirstName" placeholder="Enter First Name" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="lastName" class="form-control" name="lastName" id="facultyLastName" placeholder="Enter Last Name" required/>
+                  <form:input type="text" path="lastName" class="form-control" name="lastName" id="facultyLastName" placeholder="Enter Last Name" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="address" class="form-control" name="address" id="facultyAddress" placeholder="Enter Address" required/>
+                  <form:input type="text" path="address" class="form-control" name="address" id="facultyAddress" placeholder="Enter Address" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="city" class="form-control" name="city" id="facultyCity" placeholder="Enter City" required/>
+                  <form:input type="text" path="city" class="form-control" name="city" id="facultyCity" placeholder="Enter City" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="state" class="form-control" name="state" id="facultyState" placeholder="Enter State (Ex: NJ)" required/>
+                  <form:input type="text" path="state" class="form-control" name="state" id="facultyState" placeholder="Enter State (Ex: NJ)" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="zipcode" class="form-control" name="zipcode" id="facultyZip" placeholder="Enter Zipcode" required/>
+                  <form:input type="text" path="zipcode" class="form-control" name="zipcode" id="facultyZip" placeholder="Enter Zipcode" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="email" class="form-control" name="email" id="facultyEmail" placeholder="Enter Email" required/>
+                  <form:input type="text" path="email" class="form-control" name="email" id="facultyEmail" placeholder="Enter Email" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="phone" class="form-control" name="phone" id="facultyPhone" placeholder="Enter Phone Number" required/>
+                  <form:input type="text" path="phone" class="form-control" name="phone" id="facultyPhone" placeholder="Enter Phone Number" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="title" class="form-control" name="title" id="facultyTitle" placeholder="Enter Faculty Title" required/>
+                  <form:input type="text" path="title" class="form-control" name="title" id="facultyTitle" placeholder="Enter Faculty Title" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="userId" class="form-control" name="userId" id="facultyUserId" placeholder="Enter Faculty User Id" required/>
+                  <form:input type="text" path="userId" class="form-control" name="userId" id="facultyUserId" placeholder="Enter Faculty User Id" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <form:input type="text" path="password" class="form-control" name="password" id="facultyPassword" placeholder="Enter Faculty Password" required/>
+                  <form:input type="text" path="password" class="form-control" name="password" id="facultyPassword" placeholder="Enter Faculty Password" required="true"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
                 <form:label path="dateOfHire" style="margin-left: 35px">Date of Hire: </form:label><br>
-                  <form:input type="date" path="dateOfHire" class="form-control" name="dateOfHire" id="facultyDateOfHire" required/>
+                  <form:input type="date" path="dateOfHire" class="form-control" name="dateOfHire" id="facultyDateOfHire" required="true"/>
                   <div class="validate"></div>
                 </div>
               </div>

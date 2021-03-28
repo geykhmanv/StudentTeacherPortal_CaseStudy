@@ -40,5 +40,9 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 	public void deleteTeacher(Long id) {
 		teacherRepo.deleteById(id);
 	}
+	
+	public Teacher updateTeacher(Teacher teacher) {
+		return teacherRepo.save(teacher);
+	}
 
 }//public class TeacherServiceImpl implements TeacherServiceInterface
