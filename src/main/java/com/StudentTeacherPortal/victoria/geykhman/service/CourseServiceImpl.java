@@ -2,7 +2,9 @@ package com.StudentTeacherPortal.victoria.geykhman.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -38,5 +40,32 @@ public class CourseServiceImpl implements CourseServiceInterface {
 		}
 		
 	}//public void addCourseToTeacher(Long teacherId, Long courseId)
+
+	public List<Course> getNonRegisteredCourses() {
+		List<Course> nonRegisteredCourses = new ArrayList<>();
+		try {
+			Connection connection = dataSource.getConnection();
+			String sql = "SELECT course.course_name, course.id "
+						+ "FROM course "
+						+ "WHERE NOT EXISTS"
+							+ "(SELECT * "
+							+ "FROM course_teacher "
+							+ "WHERE course.id = course_teacher.courses_id) ";
+			//System.out.println(sql);
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				Course course = new Course();
+				course.setId(resultSet.getLong("id"));
+				course.setCourseName(resultSet.getString("course_name"));
+				nonRegisteredCourses.add(course);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return nonRegisteredCourses;
+	}//public List<Course> getNonRegisteredCourses()
 
 }//public class CourseServiceImpl

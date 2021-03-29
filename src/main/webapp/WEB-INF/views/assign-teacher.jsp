@@ -103,8 +103,8 @@
 					<c:forEach var="course" items="${courses}">
 					  <option value="${course.getId()}">${course.getCourseName()}</option>
 					</c:forEach>
-				</select><br>
-				<button style="margin-left:35px; margin-top: 10px" type=submit>Add</button>
+				</select>
+				<button style="margin-left:15px; margin-top: 10px" type=submit>Add</button>
 			</form>
 
           </div>

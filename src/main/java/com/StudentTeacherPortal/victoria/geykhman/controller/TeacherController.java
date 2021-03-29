@@ -93,7 +93,7 @@ public class TeacherController {
 		modelMap.clear();
 		if(teachers != null) modelMap.put("teacher", teachers.get(0));
 		
-		List<Course> courses = courseService.getAllCourses();
+		List<Course> courses = courseService.getNonRegisteredCourses();
 		if(courses != null) modelMap.put("courses", courses);
 		
         return "assign-teacher";
