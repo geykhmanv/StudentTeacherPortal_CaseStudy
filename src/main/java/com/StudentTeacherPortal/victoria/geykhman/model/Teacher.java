@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -35,9 +36,9 @@ public class Teacher {
 	private String title;
 	private Date dateOfHire;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "course_teacher")
-	private List<Course> teacherCourses;
+	private List<Course> courses;
 
 	
 	public Teacher() {
@@ -68,12 +69,12 @@ public class Teacher {
 	}
 
 	
-	public List<Course> getTeacherCourses() {
-		return teacherCourses;
+	public List<Course> getCourses() {
+		return courses;
 	}
 
-	public void setTeacherCourses(List<Course> teacherCourses) {
-		this.teacherCourses = teacherCourses;
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
 	}
 
 	public long getId() {

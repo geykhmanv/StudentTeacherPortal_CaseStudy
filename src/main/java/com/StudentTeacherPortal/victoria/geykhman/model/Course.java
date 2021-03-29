@@ -1,12 +1,9 @@
 package com.StudentTeacherPortal.victoria.geykhman.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,9 +17,7 @@ public class Course {
 	private long id;
 	private String courseName;
 	private int maxStudents;
-	
-	@ManyToMany(mappedBy = "teacherCourses")
-	private List<Teacher> courses;
+
 
 	public Course() {
 		super();
@@ -33,14 +28,6 @@ public class Course {
 		this.id = id;
 		this.courseName = courseName;
 		this.maxStudents = maxStudents;
-	}
-
-	public List<Teacher> getCourses() {
-		return courses;
-	}
-
-	public void setCourses(List<Teacher> courses) {
-		this.courses = courses;
 	}
 
 	public long getId() {

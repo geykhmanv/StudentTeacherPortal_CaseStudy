@@ -1,9 +1,11 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>QuickPortal - Manage Faculty</title>
+        <title>QuickPortal - Assign Faculty</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
@@ -44,8 +46,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Manage Faculty</h2>
-          <h6>Search or remove faculty at University</h6>
+          <h2>Manage Teacher Courses</h2>
+	      <h6>Assign/Remove Courses </h6>
         </div>
 
         <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
@@ -75,73 +77,25 @@
           </div>
 
           <div class="" data-aos="fade-left" data-aos-delay="100">
+			<p style="margin-left:35px">${teacher.getFirstName()} ${teacher.getLastName()}'s Current Courses:</p>
 
-            <form class="php-email-form" id="searchTeachersForm" method="post" action="/manage-faculty">
-              <div class="form-row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
-                  <div class="validate"></div>
-                </div>
-                <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="lastName" id="teacherName" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              
-              <div class="text-center">
-              	<button type="submit">Search</button> 
-             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>             	
-              </div>        
-
-            </form>
-            
-             <form class="php-email-form" id="addFacultyForm" action="/add-faculty">
-	             <div class="text-center">	              	
-	             	<button type="submit">Add a Faculty Member</button>              	
-	              </div> 
-	         </form>
-            
-            <!--Show teachers Search results -->            
-            <c:if test="${teachers != null && teachers.size() > 0}">
-	          
-	            <table>	            	
-	                <tr>
-	                  <th>Faculty ID</th>
-	                  <th>Faculty Name</th>
-	                  <th>Faculty Title</th>
-	                  <th>Email</th>
-	                  <th>Update Faculty Member</th>
-	                  <th>Assign to a Course</th>
-	                  <th>Remove Faculty Member</th>
-	                </tr>
-	                
-	                <c:forEach var="teacher" items="${teachers}">
-		                
-		                <tr>
-		                  <td>${teacher.getId()}</td>
-		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
-		                  <td>${teacher.getTitle()}</td>
-		                  <td>${teacher.getEmail()}</td>
-		                  <td>
-		                  	<form id="updateFacultyForm_${teacher.getId()}" action="/update-faculty" method="POST">
-		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
-		                  		<a href="javascript:void(0)" onclick="document.getElementById('updateFacultyForm_${teacher.getId()}').submit()">Update</a>
-		                  	</form>
-		                  </td>
-		                  <td>
-		                  	<form id="assignTeacherForm_${teacher.getId()}" action="/assign-teacher" method="POST">
-		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
-		                  		<a href="javascript:void(0)" onclick="document.getElementById('assignTeacherForm_${teacher.getId()}').submit()">Assign</a>
-		                  	</form>
-		                  </td>
-		                  <td><a href="${page.Context.request.contextPath}/delete/${teacher.id}" onclick="return confirm('Are you sure you'd like to delete this faculty member?')"> Delete</a></td>
-		                </tr>
-		               
-	                </c:forEach>
-	              </table><br><br>
-
-	         </c:if>
-              
+			<table>
+			
+			<tr>
+				<th>Course ID</th>
+				<th>Course Name</th>
+				<th>Remove Course</th>
+			</tr>
+			<c:forEach var="course" items="${teacher.getCourses()}">
+				<tr>
+					<td>${course.getId()}</td>
+					<td>${course.getCourseName()}</td>
+					<td><a href="${page.Context.request.contextPath}/remove-course-from-teacher/${course.id}" onclick="return confirm('Are you sure you'd like to remove this course?')"> Remove</a></td>
+				</tr>
+			</c:forEach>
+			</table>
+		
+        
           </div>
 
        

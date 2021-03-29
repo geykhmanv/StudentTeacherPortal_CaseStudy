@@ -45,4 +45,10 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 		return teacherRepo.save(teacher);
 	}
 
+	
+	public void removeCourseFromTeacher(Long teacherId, Long courseId) {
+		
+		
+	}
+
 }//public class TeacherServiceImpl implements TeacherServiceInterface

@@ -81,4 +81,20 @@ public class TeacherController {
 		return "redirect:/manage-faculty";
 	}
     
+	@RequestMapping(value={"/assign-teacher"})
+    public String assignTeacher(@RequestParam(name="id") Long id, ModelMap modelMap){
+		List<Teacher> teachers = teacherService.findTeacherById(id);
+		modelMap.clear();
+		if(teachers != null) modelMap.put("teacher", teachers.get(0));
+        return "assign-teacher";
+    }
+	
+	
+	@RequestMapping(value = "remove-course-from-teacher/{id}", method = RequestMethod.GET)
+	public String removeTeacherCourse(@PathVariable("id") Long id) {
+		
+		return "redirect:/assign-teacher";
+	}
+	
+	
 }//public class TeacherController

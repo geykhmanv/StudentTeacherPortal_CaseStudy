@@ -11,7 +11,7 @@ public interface TeacherServiceInterface {
 	public Teacher addTeacher(Teacher teacher);
 	public void deleteTeacher(Long id);
 	public Teacher updateTeacher(Teacher teacher);
-	
+	public void removeCourseFromTeacher(Long teacherId, Long courseId);
 	
 	
 }//public interface TeacherServiceInterface

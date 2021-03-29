@@ -32,9 +32,9 @@
 					<div class="icon-box">
 						<i class="icofont-pencil"></i>
 						<h4>
-							<a href="/manage-classes">Manage Classes</a>
+							<a href="/manage-classes">Search Classes</a>
 						</h4>
-						<p>Add or remove classes</p>
+						<p>Search for a Class</p>
 					</div>
 				</div>
 				<div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
@@ -42,9 +42,9 @@
 					<div class="icon-box">
 						<i class="icofont-group-students"></i>
 						<h4>
-							<a href="/manage-students">Manage Student Body</a>
+							<a href="/manage-students">Search Student Body</a>
 						</h4>
-						<p>Access and maintain student records</p>
+						<p>Search for a Student at University</p>
 					</div>
 				</div>
 				<div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
