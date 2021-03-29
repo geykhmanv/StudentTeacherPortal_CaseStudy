@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
 import com.StudentTeacherPortal.victoria.geykhman.service.TeacherServiceInterface;
@@ -61,7 +62,7 @@ public class TeacherController {
 		return "manage-faculty";
     }//public String manageFaculty
 	
-	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "deleteFaculty/{id}", method = RequestMethod.GET)
 	public String deleteTeacher(@PathVariable("id") Long id) {
 		teacherService.deleteTeacher(id);
 		return "redirect:/manage-faculty";
@@ -90,9 +91,10 @@ public class TeacherController {
     }
 	
 	
-	@RequestMapping(value = "remove-course-from-teacher/{id}", method = RequestMethod.GET)
-	public String removeTeacherCourse(@PathVariable("id") Long id) {
-		
+	@RequestMapping(value = "remove-course-from-teacher/{teacherId}/{courseId}", method = RequestMethod.GET)
+	public String removeTeacherCourse(@PathVariable("teacherId") Long teacherId, @PathVariable("courseId") Long courseId, RedirectAttributes redirectAttrs) {
+		teacherService.removeCourseFromTeacher(teacherId, courseId);
+		redirectAttrs.addAttribute("id", teacherId);
 		return "redirect:/assign-teacher";
 	}
 	

@@ -134,7 +134,7 @@
 		                  		<a href="javascript:void(0)" onclick="document.getElementById('assignTeacherForm_${teacher.getId()}').submit()">Assign</a>
 		                  	</form>
 		                  </td>
-		                  <td><a href="${page.Context.request.contextPath}/delete/${teacher.id}" onclick="return confirm('Are you sure you'd like to delete this faculty member?')"> Delete</a></td>
+		                  <td><a href="${page.Context.request.contextPath}/deleteFaculty/${teacher.id}" onclick="return confirm('Are you sure?')"> Remove</a></td>
 		                </tr>
 		               
 	                </c:forEach>

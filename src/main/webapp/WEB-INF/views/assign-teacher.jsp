@@ -90,7 +90,7 @@
 				<tr>
 					<td>${course.getId()}</td>
 					<td>${course.getCourseName()}</td>
-					<td><a href="${page.Context.request.contextPath}/remove-course-from-teacher/${course.id}" onclick="return confirm('Are you sure you'd like to remove this course?')"> Remove</a></td>
+					<td><a href="${page.Context.request.contextPath}/remove-course-from-teacher/${teacher.id}/${course.id}" onclick="return confirm('Are you sure?')"> Remove</a></td>
 				</tr>
 			</c:forEach>
 			</table>
