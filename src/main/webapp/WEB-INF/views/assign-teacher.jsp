@@ -93,9 +93,20 @@
 					<td><a href="${page.Context.request.contextPath}/remove-course-from-teacher/${teacher.id}/${course.id}" onclick="return confirm('Are you sure?')"> Remove</a></td>
 				</tr>
 			</c:forEach>
-			</table>
+			</table><br><br>
 		
-        
+			<p style="margin-left:35px">Choose a course to assign to ${teacher.getFirstName()} ${teacher.getLastName()}: </p>
+			<form id="addCourseToTeacher" method="get" action="/add-course-to-teacher">
+				<input style="border: solid 1px" name = "teacherId" value="${teacher.getId() }" hidden="true"/>
+				<select style="margin-left:35px" name="newCourseId">
+					<option value="none" selected disabled>Select a course</option>
+					<c:forEach var="course" items="${courses}">
+					  <option value="${course.getId()}">${course.getCourseName()}</option>
+					</c:forEach>
+				</select><br>
+				<button style="margin-left:35px; margin-top: 10px" type=submit>Add</button>
+			</form>
+
           </div>
 
        

@@ -6,6 +6,7 @@ import com.StudentTeacherPortal.victoria.geykhman.model.Course;
 
 
 public interface CourseServiceInterface {
-	public List<Course> findCourseByName(String name);
+	public List<Course> getAllCourses();
+	public void addCourseToTeacher(Long teacherId, Long courseId);
 
 }//public interface CourseServiceInterface

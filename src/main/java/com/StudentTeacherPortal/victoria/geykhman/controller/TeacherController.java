@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.StudentTeacherPortal.victoria.geykhman.model.Course;
 import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
+import com.StudentTeacherPortal.victoria.geykhman.service.CourseServiceInterface;
 import com.StudentTeacherPortal.victoria.geykhman.service.TeacherServiceInterface;
 
 
@@ -22,6 +24,9 @@ public class TeacherController {
 	
 	@Autowired
 	private TeacherServiceInterface teacherService;
+	
+	@Autowired
+	private CourseServiceInterface courseService;
 	
 	
 	@RequestMapping(value="/add-faculty", method = RequestMethod.GET)
@@ -87,6 +92,10 @@ public class TeacherController {
 		List<Teacher> teachers = teacherService.findTeacherById(id);
 		modelMap.clear();
 		if(teachers != null) modelMap.put("teacher", teachers.get(0));
+		
+		List<Course> courses = courseService.getAllCourses();
+		if(courses != null) modelMap.put("courses", courses);
+		
         return "assign-teacher";
     }
 	
@@ -98,5 +107,11 @@ public class TeacherController {
 		return "redirect:/assign-teacher";
 	}
 	
+	@RequestMapping("/add-course-to-teacher")
+	public String addCourseToTeacher(@RequestParam(name="newCourseId") Long newCourseId, @RequestParam(name="teacherId") Long teacherId, ModelMap modelMap, RedirectAttributes redirectAttrs) {
+		courseService.addCourseToTeacher(teacherId, newCourseId);
+		redirectAttrs.addAttribute("id", teacherId);
+		return "redirect:/assign-teacher";
+	}
 	
 }//public class TeacherController
