@@ -3,11 +3,12 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>QuickPortal - Manage Students</title>
+        <title>QuickPortal - Search Student Body</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
-       <%@include file="includes/header.jsp" %>
+        <%@include file="includes/header.jsp" %>
+        
       
         <!-- =======================================================
         * Template Name: Anyar - v2.2.1
@@ -43,8 +44,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Manage Student Body</h2>
-          <h6>Add or remove students at University</h6>
+          <h2>Search Student Body</h2>
+          <h6>Search for Student Information at University</h6>
         </div>
 
         <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
@@ -75,101 +76,75 @@
 
           <div class="" data-aos="fade-left" data-aos-delay="100">
 
-            <form class="php-email-form" id="myForm">
+            <form class="php-email-form" id="searchTeachersForm" method="post" action="/manage-faculty">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="sid" class="form-control" id="sid" placeholder="Search By Student ID"/>
+                  <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="sname" id="sname" placeholder="Search By Student Name" />
+                  <input type="text" class="form-control" name="lastName" id="teacherName" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
                   <div class="validate"></div>
                 </div>
               </div>
               
-              <div class="text-center"><button type="submit">Search</button>&nbsp&nbsp<button type="submit">Add a Student</button></div>
-              
+              <div class="text-center">
+              	<button type="submit">Search</button> 
+             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>             	
+              </div>        
 
             </form>
-
-
-            <!--Click search button which outputs that course with attributes of Student table -->
-
-            <table>
-                <tr>
-                  <th>Student Id</th>
-                  <th>Student Name<button type="button">Edit</button></th>
-                  <th>Student Email<br><button type="button">Edit</button></th>
-                  <th>Student Phone<button type="button">Edit</button></th>
-                  <th>Student Address<button type="button">Edit</button></th>
-                  <th>City<button type="button">Edit</button></th>
-                  <th>State<button type="button">Edit</button></th>
-                  <th>Zipcode<button type="button">Edit</button></th>
-                  <th>Date of Enrollement<button type="button">Edit</button></th>
-                  <th>Remove Student</th>
-                </tr>
-                <tr>
-                  <td>11111</td>
-                  <td>Dylan, Robert</td>
-                  <td>dylan1@bluebadgers.com</td>
-                  <td>555-555-5555</td>
-                  <td>100 Normal Street</td>
-                  <td>Anytown</td>
-                  <td>NJ</td>
-                  <td>12345</td>
-                  <td>01/01/01</td>
-                  <td><button type="button" id="remove-course">Remove</button></td>
-                </tr>
-                
-              </table><br><br>
-              
-
-              <!--Click 'Add a Student' to input above info into DB tables (this is what comes up after clicking the button)-->
-              <form class="php-email-form" id="myForm">
-                <div class="form-row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" name="sid" class="form-control" id="add-sid" placeholder="Input Student ID"/>
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="sname" id="add-sname" placeholder="Input Student Name" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="semail" id="add-semail" placeholder="Input Student Email" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="saddress" id="add-saddress" placeholder="Input Student Address" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="scity" id="add-scity" placeholder="Input City" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="sstate" id="add-sstate" placeholder="Input State" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="szip" id="add-szip" placeholder="Input Zip Code" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="sdate" id="add-sdate" placeholder="Input Date of Enrollment" />
-                    <div class="validate"></div>
-                  </div>
-                </div>
             
-                <div class="text-center"><button type="submit">Submit</button></div>
-              </form>
+             <form class="php-email-form" id="addFacultyForm" action="/add-faculty">
+	             <div class="text-center">	              	
+	             	<button type="submit">Add a Faculty Member</button>              	
+	              </div> 
+	         </form>
+            
+            <!--Show teachers Search results -->            
+            <c:if test="${teachers != null && teachers.size() > 0}">
+	          
+	            <table>	            	
+	                <tr>
+	                  <th>Faculty ID</th>
+	                  <th>Faculty Name</th>
+	                  <th>Faculty Title</th>
+	                  <th>Email</th>
+	                  <th>Update Faculty Member</th>
+	                  <th>Assign to a Course</th>
+	                  <th>Remove Faculty Member</th>
+	                </tr>
+	                
+	                <c:forEach var="teacher" items="${teachers}">
+		                
+		                <tr>
+		                  <td>${teacher.getId()}</td>
+		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
+		                  <td>${teacher.getTitle()}</td>
+		                  <td>${teacher.getEmail()}</td>
+		                  <td>
+		                  	<form id="updateFacultyForm_${teacher.getId()}" action="/update-faculty" method="POST">
+		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
+		                  		<a href="javascript:void(0)" onclick="document.getElementById('updateFacultyForm_${teacher.getId()}').submit()">Update</a>
+		                  	</form>
+		                  </td>
+		                  <td>
+		                  	<form id="assignTeacherForm_${teacher.getId()}" action="/assign-teacher" method="POST">
+		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
+		                  		<a href="javascript:void(0)" onclick="document.getElementById('assignTeacherForm_${teacher.getId()}').submit()">Assign</a>
+		                  	</form>
+		                  </td>
+		                  <td><a href="${page.Context.request.contextPath}/deleteFaculty/${teacher.id}" onclick="return confirm('Are you sure?')"> Remove</a></td>
+		                </tr>
+		               
+	                </c:forEach>
+	              </table><br><br>
 
-
+	         </c:if>
+              
           </div>
 
-        </div>
-
-      </div>
+       
     </section><!--End Contact Section -->
 </body>
 <!-- ======= Footer ======= -->
@@ -245,5 +220,6 @@
 <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
 <div id="preloader"></div>
 
+<script type="text/javascript" src="assets/js/util.js"></script>
 
 </html>

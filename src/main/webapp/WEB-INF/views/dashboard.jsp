@@ -62,9 +62,9 @@
 					<div class="icon-box">
 						<i class="icofont-stamp"></i>
 						<h4>
-							<a href="/register-student">Register a Student</a>
+							<a href="/register-student">Other</a>
 						</h4>
-						<p>Register students for classes</p>
+						<p>Miscellaneous</p>
 					</div>
 				</div>
 				<!-- <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="500">
