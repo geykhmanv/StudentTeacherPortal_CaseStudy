@@ -76,65 +76,47 @@
 
           <div class="" data-aos="fade-left" data-aos-delay="100">
 
-            <form class="php-email-form" id="searchTeachersForm" method="post" action="/manage-faculty">
+            <form class="php-email-form" id="searchStudentsForm" method="post" action="/manage-students">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="id" class="form-control" id="teacherId" placeholder="Search By Faculty ID" value="${searchCriteriaId}"/>
+                  <input type="text" name="id" class="form-control" id="studentId" placeholder="Search By Student ID" value="${searchCriteriaId}"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="lastName" id="teacherName" placeholder="Search By Faculty Last Name" value="${searchCriteriaLastName}" />
+                  <input type="text" class="form-control" name="lastName" id="studentName" placeholder="Search By Student Last Name" value="${searchCriteriaLastName}" />
                   <div class="validate"></div>
                 </div>
               </div>
               
               <div class="text-center">
               	<button type="submit">Search</button> 
-             	<button type="submit" onclick="clearTeacherSearch()">Clear Search</button>             	
+             	<button type="submit" onclick="clearStudentSearch()">Clear Search</button>             	
               </div>        
 
             </form>
-            
-             <form class="php-email-form" id="addFacultyForm" action="/add-faculty">
-	             <div class="text-center">	              	
-	             	<button type="submit">Add a Faculty Member</button>              	
-	              </div> 
-	         </form>
-            
-            <!--Show teachers Search results -->            
-            <c:if test="${teachers != null && teachers.size() > 0}">
+           
+            <!--Show student search results -->            
+            <c:if test="${students != null && students.size() > 0}">
 	          
 	            <table>	            	
 	                <tr>
-	                  <th>Faculty ID</th>
-	                  <th>Faculty Name</th>
-	                  <th>Faculty Title</th>
+	                  <th>Student ID</th>
+	                  <th>Student Name</th>
 	                  <th>Email</th>
-	                  <th>Update Faculty Member</th>
-	                  <th>Assign to a Course</th>
-	                  <th>Remove Faculty Member</th>
+	                  <th>Phone</th>
+	                  <th>UserId</th>
+	                  <th>Date Of Enrollment</th>
 	                </tr>
 	                
-	                <c:forEach var="teacher" items="${teachers}">
+	                <c:forEach var="student" items="${students}">
 		                
 		                <tr>
-		                  <td>${teacher.getId()}</td>
-		                  <td>${teacher.getLastName()}, ${teacher.getFirstName()}</td>
-		                  <td>${teacher.getTitle()}</td>
-		                  <td>${teacher.getEmail()}</td>
-		                  <td>
-		                  	<form id="updateFacultyForm_${teacher.getId()}" action="/update-faculty" method="POST">
-		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
-		                  		<a href="javascript:void(0)" onclick="document.getElementById('updateFacultyForm_${teacher.getId()}').submit()">Update</a>
-		                  	</form>
-		                  </td>
-		                  <td>
-		                  	<form id="assignTeacherForm_${teacher.getId()}" action="/assign-teacher" method="POST">
-		                  		<input type="hidden" name="id" value="${teacher.getId()}"/>
-		                  		<a href="javascript:void(0)" onclick="document.getElementById('assignTeacherForm_${teacher.getId()}').submit()">Assign</a>
-		                  	</form>
-		                  </td>
-		                  <td><a href="${page.Context.request.contextPath}/deleteFaculty/${teacher.id}" onclick="return confirm('Are you sure?')"> Remove</a></td>
+		                  <td>${student.getId()}</td>
+		                  <td>${student.getLastName()}, ${student.getFirstName()}</td>
+		                  <td>${student.getEmail()}</td>
+		                  <td>${student.getPhone()}</td>
+		                  <td>${student.getUserId()}</td>
+		                  <td>${student.getDateOfEnrollment()}</td>
 		                </tr>
 		               
 	                </c:forEach>
