@@ -68,4 +68,16 @@ public class CourseServiceImpl implements CourseServiceInterface {
 		return nonRegisteredCourses;
 	}//public List<Course> getNonRegisteredCourses()
 
+	public List<Course> findCourseByName(String courseName) {
+		return courseRepo.findByCourseName(courseName);
+	}
+
+	public List<Course> findCourseById(Long id) {
+		Course course = courseRepo.getById(id);
+		List<Course> courses = new ArrayList<Course>();
+		courses.add(course);
+		
+		return courses;
+	}
+
 }//public class CourseServiceImpl

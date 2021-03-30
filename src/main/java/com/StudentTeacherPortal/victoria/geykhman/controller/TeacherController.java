@@ -43,8 +43,6 @@ public class TeacherController {
 		return "redirect:/manage-faculty";
 	}
 	
-	
-	//@RequestMapping( value={ "/manage-faculty", "/manage-faculty/last-name/{lastName}", "/manage-faculty/id/{id}" }, method = RequestMethod.GET)
 	@RequestMapping( value={ "/manage-faculty" })
     public String manageFaculty(@RequestParam(name="lastName", required=false) String lastName, @RequestParam(name="id", required=false) Long id, ModelMap modelMap){
 

@@ -3,7 +3,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
       
-        <title>QuickPortal - Manage Classes</title>
+        <title>QuickPortal - Search Courses</title>
         <meta content="" name="description">
         <meta content="" name="keywords">
       
@@ -43,8 +43,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Manage Classes</h2>
-          <h6>Add or remove classes at University</h6>
+          <h2>Search Classes</h2>
+          <h6>Search For Different Courses at University</h6>
         </div>
 
         <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
@@ -73,83 +73,51 @@
 
           </div>
 
-          <div class="" data-aos="fade-left" data-aos-delay="100">
+           <div class="" data-aos="fade-left" data-aos-delay="100">
 
-            <form class="php-email-form" id="myForm">
+            <form class="php-email-form" id="searchCourses" method="post" action="/manage-classes">
               <div class="form-row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="cid" class="form-control" id="cid" placeholder="Search By Course ID"/>
+                  <input type="text" name="id" class="form-control" id="courseId" placeholder="Search By Course ID" value="${searchCriteriaId}"/>
                   <div class="validate"></div>
                 </div>
                 <div class="col-md-6 form-group">
-                  <input type="text" class="form-control" name="cname" id="cname" placeholder="Search By Course Name" />
+                  <input type="text" class="form-control" name="courseName" id="courseName" placeholder="Search By Course Name" value="${searchCriteriaCourseName}" />
                   <div class="validate"></div>
                 </div>
               </div>
               
-              <div class="text-center"><button type="submit">Search</button>&nbsp&nbsp<button type="submit">Add a Course</button></div>
-              
+              <div class="text-center">
+              	<button type="submit">Search</button> 
+             	<button type="submit" onclick="clearCourseSearch()">Clear Search</button>             	
+              </div>        
 
             </form>
-
-
-            <!--Click search button which outputs that course with Course Id, Course Name, Course Teacher, Course Time, Max Students -->
-
-            <table>
-                <tr>
-                  <th>Course Id</th>
-                  <th>Course Name</th>
-                  <th>Course Teacher</th>
-                  <th>Course Time</th>
-                  <th>Max Students</th>
-                  <th>Remove Course</th>
-                </tr>
-                <tr>
-                  <td>11111</td>
-                  <td>English 101</td>
-                  <td>Smith, Robert</td>
-                  <td>MW 11-12:30</td>
-                  <td>22</td>
-                  <td><button type="button" id="remove-course">Remove</button></td>
-                </tr>
-                
-              </table><br><br>
-              
-
-              <!--Click 'Add a Course' to input above info into DB tables (this is what comes up after clicking the button)-->
-              <form class="php-email-form" id="myForm">
-                <div class="form-row">
-                  <div class="col-md-6 form-group">
-                    <input type="text" name="cid" class="form-control" id="add-cid" placeholder="Input Course ID"/>
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="cname" id="add-cname" placeholder="Input Course Name" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="cname" id="add-cteacher" placeholder="Input Course Teacher" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="cname" id="add-ctime" placeholder="Input Course Time" />
-                    <div class="validate"></div>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" name="cname" id="add-max" placeholder="Input Max Students" />
-                    <div class="validate"></div>
-                  </div>
-                </div>
             
-                <div class="text-center"><button type="submit">Submit</button></div>
-              </form>
+            <!--Show courses Search results -->            
+            <c:if test="${courses != null && courses.size() > 0}">
+	          
+	            <table>	            	
+	                <tr>
+	                  <th>Course ID</th>
+	                  <th>Faculty Name</th>
+	                  <th>Maximum Students</th>
+	                </tr>
+	                
+	                <c:forEach var="course" items="${courses}">
+		                
+		                <tr>
+		                  <td>${course.getId()}</td>
+		                  <td>${course.getCourseName()}</td>
+		                  <td>${course.getMaxStudents()}</td>
+		                </tr>
+		               
+	                </c:forEach>
+	              </table><br><br>
 
+	         </c:if>
 
-          </div>
-
-        </div>
-
-      </div>
+    </div>
     </section><!--End Contact Section -->
 </body>
 <!-- ======= Footer ======= -->
@@ -224,5 +192,7 @@
 
 <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
 <div id="preloader"></div>
+
+<script type="text/javascript" src="assets/js/util.js"></script>
 
 </html>
