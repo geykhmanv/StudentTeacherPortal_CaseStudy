@@ -21,22 +21,11 @@ public class RepositoryIntegrationTest {
 	
 	//@Autowired
 	private TeacherRepository teacherRepo;
-	
-	// @Autowired
-	 private TestEntityManager entityManager;
-	
 		
 	@Test
 	public void whenFindByName_thenReturnTeacher() {	   
-	    
 	    List<Teacher> foundTeachers = teacherService.findTeacherByLastName("Smith");
-	    
-	    Assertions.assertTrue(!foundTeachers.isEmpty());
-	    
+	    Assertions.assertTrue(!foundTeachers.isEmpty());  
 	}//public void whenFindByName_thenReturnTeacher
 
-
-	
-	
-	
 }//public class RepositoryIntegrationTest 

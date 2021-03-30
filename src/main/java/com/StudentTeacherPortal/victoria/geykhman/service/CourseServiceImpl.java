@@ -63,8 +63,7 @@ public class CourseServiceImpl implements CourseServiceInterface {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		return nonRegisteredCourses;
 	}//public List<Course> getNonRegisteredCourses()
 
