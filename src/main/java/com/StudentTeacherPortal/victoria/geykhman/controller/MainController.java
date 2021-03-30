@@ -27,16 +27,7 @@ public class MainController {
         return "dashboard";
     }
 	
-	@RequestMapping(value="/manage-students", method = RequestMethod.GET)
-    public String manageStudents(ModelMap model){
-        return "manage-students";
-    }
 	
-		
-	@RequestMapping(value="/manage-classes", method = RequestMethod.GET)
-    public String manageClasses(ModelMap model){
-        return "manage-classes";
-    }
 	
 	@RequestMapping(value="/register-student", method = RequestMethod.GET)
     public String registerStudent(ModelMap model){
