@@ -30,12 +30,19 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 	}
 	
 	public List<Teacher> findTeacherById(Long id) {
-		Teacher teacher = teacherRepo.getById(id);
 		List<Teacher> teachers = new ArrayList<Teacher>();
-		teachers.add(teacher);
 		
+		try {
+			Teacher teacher = teacherRepo.getById(id);
+			teachers.add(teacher);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return teachers;
+			
+		}
+
 		return teachers;
-	}
+	}//public List<Teacher> findTeacherById(Long id)
 	
 	public List<Teacher> getAllTeachers() {
 		return teacherRepo.findAll();

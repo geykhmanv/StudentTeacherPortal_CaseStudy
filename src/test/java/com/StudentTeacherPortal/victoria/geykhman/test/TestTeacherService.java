@@ -1,6 +1,7 @@
 package com.StudentTeacherPortal.victoria.geykhman.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
@@ -48,13 +49,18 @@ class TestTeacherService {
 		assertEquals(expectedTeacher, actualTeacher);
 	}*/
 	
+	//in progress - failing
 	@Test
+	@Transactional
 	public void testDeleteTeacher() {
-		List<Teacher> teachers = teacherService.findTeacherById(Long.valueOf(3));
-		
+		List<Teacher> teachers = teacherService.findTeacherById(Long.valueOf(1));
+		Teacher teacher = null;
+		if(teachers != null && !teachers.isEmpty()) teacher = teachers.get(0);
+		teacherService.deleteTeacher(Long.valueOf(1));
+		assertNull(teacher);
 	}
 	
-	
+	/*
 	@Test
 	@Transactional
 	public void whenUpdateTeacher_thenReturnTeacher() {
@@ -65,7 +71,7 @@ class TestTeacherService {
 		actualTeacher = teacherService.updateTeacher(actualTeacher);
 		System.out.println(actualTeacher);
 		assertEquals(actualTeacher, actualTeacher);
-	}
+	}*/
 	
 	@Test
 	public void testRemoveCourseFromTeacher() {
