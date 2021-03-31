@@ -44,7 +44,7 @@ public class Teacher {
 		super();
 	}
 	
-	public Teacher(String userId, String password, String firstName, String lastName,	String email, String phone, 
+	public Teacher(String userId, String password, String firstName, String lastName, String email, String phone, 
 			String address,	String city, String state, String zipcode, String title, Date dateOfHire) {
 		
 		super();

@@ -26,7 +26,7 @@ class TestCourseService {
 	
 	@Test
 	public void whenFindByCourseId_thenReturnCourse() {
-		List<Course> foundCourses = courseService.findCourseById((long) 4);
+		List<Course> foundCourses = courseService.findCourseById(Long.valueOf(4));
 		Assertions.assertTrue(!foundCourses.isEmpty());
 	}
 	

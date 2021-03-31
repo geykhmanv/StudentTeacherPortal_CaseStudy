@@ -26,7 +26,7 @@ class TestStudentService {
 	
 	@Test
 	public void whenFindByStudentId_thenReturnStudent() {
-		List<Student> foundStudents = studentService.findStudentById((long) 1);
+		List<Student> foundStudents = studentService.findStudentById(Long.valueOf(1));
 		Assertions.assertTrue(!foundStudents.isEmpty());
 	}
 	
