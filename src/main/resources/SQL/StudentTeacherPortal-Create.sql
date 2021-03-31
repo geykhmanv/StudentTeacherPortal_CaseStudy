@@ -32,7 +32,7 @@ INSERT INTO `course` (`id`, `course_name`, `max_students`) VALUES
 	(3, 'Linear Algebra', 30),
 	(4, 'Biology', 73),
 	(5, 'English Literature', 33),
-	(6, '3D Programming', 15),
+	(6, '3D Printing', 15),
 	(7, 'Spanish', 25),
 	(8, 'Public Speaking', 55),
 	(9, 'Calculus', 40),
