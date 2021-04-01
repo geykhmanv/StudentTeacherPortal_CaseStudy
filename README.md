@@ -19,4 +19,4 @@ STRUGGLES:
 
 Setting up the project configuration was a lengthy struggle, as I created the front-end of my application using a Bootstrap template, and none of the CSS would render in my Web Dynamic Project created in Eclipse.  After many attempts, I decided to try setting up a Spring Boot application, and it was successful.  Using Spring Boot with JPA was somewhat different to the methods discussed in class, but I found it easy to adapt and learn the somewhat 'sleaker' and for me, more intuitive way of completing the CRUD operations for my application.  If given more time, I would love to implement my reach goals and restructure my application to resemble some of the university portal's I've seen and used myself.  Lastly, I would also plan to refactor some of my code to accound for certain exceptions as well as create a more efficient code structure.
 
-***DB Schema and DB creation file located in resources/SQL
+***DB Schema and DB creation file located in src/main/resources/SQL
