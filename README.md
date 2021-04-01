@@ -13,7 +13,7 @@ As an admin I want to select the 'Search Student Body' option from the dashboard
 
 REACH GOALS:
 
-Currently, there is no login option to access QuickPortal.  Any user can start from the Home page and choose any option from the Dashboard.  A reach goal would be to include a Log In portal, that differentiates between an administrative user and a student user.  Admins are allowed to Manage Faculty, Manage the Student Body, and Manage the Courses (add, remove, update), while a student user can only search the Faculty, the student body, and the courses offered.  A student user would also be able to register for an available course.
+Currently, there is no login option to access QuickPortal.  Any user can start from the Home page and choose any option from the Dashboard.  A reach goal would be to include a Log In portal, that differentiates between an administrative user and a student user.  Admins are allowed to Manage Faculty, Manage the Student Body, and Manage the Courses (add, remove, update), while a student user can only search the Faculty, the student body, and the courses offered.  A student user would also be able to register for an available course.  I would also add security regarding my users' passwords and have them hashed.
 
 STRUGGLES:
 
