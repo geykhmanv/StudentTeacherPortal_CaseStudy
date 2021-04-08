@@ -4,6 +4,10 @@ PROJECT DESCRIPTION:
 
 QuickPortal is a University management system.  From the home page, one can access the university's contact information or visit the Dashboard, where there are several options.  An administrative user can access the Manage Faculty option where all the current faculty members are displayed.  Those faculty members can be updated, removed, or assigned to a course they teach in the university.  The administrator can also add faculty members to the database using QuickPortal's functionality.  The other options from the dashboard include searching the students attending the university as well as searching the courses offered at the university.
 
+TECHNOLOGIES: 
+
+Java, Spring Boot, JPA, JUnit, JavaScript, HTML, CSS, Boostrap.  Deployed on Tomcat 9 server.
+
 USER STORIES:
 
 As a visitor to the admin portal I want to select the dashboard option so that I can choose from the list of options.
