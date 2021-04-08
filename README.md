@@ -6,7 +6,7 @@ QuickPortal is a University management system.  From the home page, one can acce
 
 TECHNOLOGIES: 
 
-Java, Spring Boot, JPA, JUnit, JavaScript, HTML, CSS, Boostrap.  Deployed on Tomcat 9 server.
+Java, Spring Boot, JPA, JUnit, JavaScript, HTML, CSS, Bootstrap.  Deployed on Tomcat 9 server.
 
 USER STORIES:
 
