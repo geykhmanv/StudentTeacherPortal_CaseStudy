@@ -60,11 +60,4 @@ class TestTeacherService {
 		assertNull(deletedTeacher);*/
 	}
 	
-	
-	@Test
-	public void testRemoveCourseFromTeacher() {
-		
-	}
-	
-	
 }//class TestTeacherService 
