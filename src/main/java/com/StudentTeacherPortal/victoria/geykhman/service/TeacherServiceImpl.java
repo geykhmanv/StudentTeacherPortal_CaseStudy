@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.StudentTeacherPortal.victoria.geykhman.exceptions.teacherNotFoundException;
 import com.StudentTeacherPortal.victoria.geykhman.model.Teacher;
 import com.StudentTeacherPortal.victoria.geykhman.repository.TeacherRepository;
 
@@ -34,11 +35,13 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 		
 		try {
 			Teacher teacher = teacherRepo.getById(id);
+			if(teacher == null) {
+				throw new teacherNotFoundException();
+			}
 			teachers.add(teacher);
-		}catch(Exception e) {
+		}catch(teacherNotFoundException e) {
 			e.printStackTrace();
 			return teachers;
-			
 		}
 
 		return teachers;
