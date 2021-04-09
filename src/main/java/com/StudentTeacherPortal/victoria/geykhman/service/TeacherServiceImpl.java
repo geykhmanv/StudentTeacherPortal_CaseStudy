@@ -36,11 +36,11 @@ public class TeacherServiceImpl implements TeacherServiceInterface {
 		try {
 			Teacher teacher = teacherRepo.getById(id);
 			if(teacher == null) {
-				throw new teacherNotFoundException();
+				throw new teacherNotFoundException("Teacher Not Found");
 			}
 			teachers.add(teacher);
 		}catch(teacherNotFoundException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 			return teachers;
 		}
 
